@@ -31,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean debit(Customer money) {
 		// TODO Auto-generated method stub
-		return false;
+		return customerRepo.debit(money);
 	}
 
 }

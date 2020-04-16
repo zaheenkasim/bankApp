@@ -77,9 +77,10 @@ public  class CustomerRepoImpl implements CustomerRepo  {
 	@Override
 	public boolean debit(Customer money) {
 		// TODO Auto-generated method stub
+		System.out.println("zaheenkasim");
 		try {
-			String sql = "update money set saving=(savings-?) where AccountNo=?";
-			int i=jdbcTemplate.update(sql, money.getAccountnum(),money.getMoney());
+			String sql = "update money set savings=(savings-?) where AccountNo=?";
+			int i=jdbcTemplate.update(sql,money.getMoney(), money.getAccountnum());
 		
 			if(i==0)
 			{
