@@ -79,5 +79,7 @@ body {
 			</form>
 			<a href="Balance"><button class="button"><span>Balance</span></button></a>
 			<br>
+			<a href="Edit"><button class="button"><span>Edit Details</span></button></a>
+			<br>
 </body>
 </html>

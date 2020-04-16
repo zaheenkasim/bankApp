@@ -17,11 +17,11 @@ public class Customer {
     private String Password;
     private String Aadharnum;
     private String Type;
-    private String Money;
-	public String getMoney() {
+    private Float Money;
+	public Float getMoney() {
 		return Money;
 	}
-	public void setMoney(String money) {
+	public void setMoney(Float money) {
 		Money = money;
 	}
 	public int getId() {

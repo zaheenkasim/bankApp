@@ -114,9 +114,20 @@ public ModelAndView sendMoney(Customer money) {
 	ModelAndView mv = new ModelAndView();
 	mv.setViewName("Debit");
 	return mv;
-	
+		
 	
 }
+@GetMapping("/Edit")
+public ModelAndView editPage()
+{
+	ModelAndView model= new ModelAndView();
+	Iterable<Customer> customerList= customerService.findAll();
+	model.addObject("CustomerList", customerList);
+	model.setViewName("Edit");
+	return model;
+	}
+
+
 
 
 
