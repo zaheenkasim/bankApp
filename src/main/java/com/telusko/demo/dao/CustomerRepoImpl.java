@@ -24,7 +24,7 @@ public  class CustomerRepoImpl implements CustomerRepo  {
      private JdbcTemplate jdbcTemplate;
      public boolean login(Customer customer) {
  		// TODO Auto-generated method stub
- 		String sql="select * from user where Email=? and Password=?";
+ 		String sql="select * from user where AccountNo=? and Password=?";
  		System.out.print(sql);
  		Customer c=jdbcTemplate.queryForObject(sql, new Object[] {customer.getEmail(),customer.getPassword()}, new RowMapper<Customer>() {
 
@@ -33,7 +33,7 @@ public  class CustomerRepoImpl implements CustomerRepo  {
  			@Override
  			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
  				Customer p=new Customer();
- 				p.setEmail(rs.getString(1));
+ 				p.setEmail(rs.getString(3));
  				p.setPassword(rs.getString(2));
  				return p;
  			}
@@ -73,4 +73,27 @@ public  class CustomerRepoImpl implements CustomerRepo  {
      
      
 }
-     }
+
+	@Override
+	public boolean debit(Customer money) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "update money set saving=(savings-?) where AccountNo=?";
+			int i=jdbcTemplate.update(sql, money.getAccountnum(),money.getMoney());
+		
+			if(i==0)
+			{
+				return false;
+			}
+			return true;	
+		
+		}
+		catch(Exception e) {
+			
+			
+			return false;
+			
+		}
+}
+	}
+     

@@ -85,7 +85,7 @@ public class CustomerController
 
 
 @GetMapping("/Home")
-public ModelAndView packagePage() 
+public ModelAndView homePage() 
 {
 	ModelAndView model = new ModelAndView();
 	Iterable<Customer> customerList = customerService.findAll();
@@ -94,6 +94,33 @@ public ModelAndView packagePage()
 	return model;
 	
 }
+
+
+@GetMapping("/Debit")
+public ModelAndView debitPage() 
+{
+	ModelAndView model = new ModelAndView();
+	Iterable<Customer> customerList = customerService.findAll();
+	model.addObject("CustomerList", customerList);
+	model.setViewName("Debit");
+	return model;
+	
+}
+
+@PostMapping("/Debit")
+public ModelAndView sendMoney(Customer money) {
+	
+	boolean c=this.customerService.debit(money);
+	ModelAndView mv = new ModelAndView();
+	mv.setViewName("Debit");
+	return mv;
+	
+	
+}
+
+
+
+
 }
 	 
 	 

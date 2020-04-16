@@ -28,4 +28,10 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepo.findAll();
 	}
 
+	@Override
+	public boolean debit(Customer money) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

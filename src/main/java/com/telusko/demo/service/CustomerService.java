@@ -9,6 +9,7 @@ import com.telusko.demo.model.Customer;
 public interface CustomerService {
 	public boolean login(Customer customer);
 	
+	public boolean debit(Customer money);
 	
 	public Iterable<Customer> findAll();
 	}

@@ -14,6 +14,8 @@ public interface CustomerRepo
 {
 	public boolean login(Customer customer);
 	
+	public boolean debit(Customer money);
+	
 	public Iterable<Customer> findAll();
 	
 }

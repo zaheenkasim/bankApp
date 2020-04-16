@@ -17,6 +17,13 @@ public class Customer {
     private String Password;
     private String Aadharnum;
     private String Type;
+    private String Money;
+	public String getMoney() {
+		return Money;
+	}
+	public void setMoney(String money) {
+		Money = money;
+	}
 	public int getId() {
 		return Id;
 	}

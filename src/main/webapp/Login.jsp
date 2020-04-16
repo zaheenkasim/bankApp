@@ -16,8 +16,8 @@
 				
 					
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label> <input
-							type="email" name="Email" class="form-control" id="exampleInputEmail1">
+						<label for="exampleInputEmail1">Account Number</label> <input
+							type="number" name="Email" class="form-control" id="exampleInputEmail1">
 					</div>
 				
 					<div class="form-group">
@@ -28,6 +28,7 @@
 					
 					
 					<button type="submit" class="btn btn-primary">Login</button>
+				</a>
 				</form>
 			</div>
 		</div>
