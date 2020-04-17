@@ -14,4 +14,6 @@ public interface CustomerService {
 	public Iterable<Customer> findAll();
 	
 	public boolean register(Customer customer);
+	
+	public boolean edit(Customer customer);
 	}

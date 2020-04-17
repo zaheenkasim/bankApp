@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -130,7 +130,10 @@ $(window).on("load resize ", function() {
 
 <body>
 	<h2></h2>			
-			
+		<form action="Edit" method="post">
+			<input type="text" name="label" 
+                value="<%="${contact.Name}"%>">
+			</form>
 			<section>
   <!--for demo wrap-->
   <h1>Customer</h1>
@@ -145,7 +148,7 @@ $(window).on("load resize ", function() {
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
       
-      <c:forEach var="customer" items="${customerList}" varStatus="status">
+      <c:forEach var="customer" items="${contact}" varStatus="status">
 			<tr>
 				
 				<td>${customer.Accountnum}</td>
@@ -180,5 +183,65 @@ $(window).on("load resize ", function() {
 			
 			
 
+</body>
+</html> --%>
+
+
+
+
+
+
+
+
+
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Edit</title>
+</head>
+<body>
+ <% 
+ String scard="";
+ String xyz= request.getParameter("abc");
+ %>
+ <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost/abc"
+     user="root"  password="zaheen"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT * from user where AccountNum='"+xyz+"'";
+</sql:query>
+ 
+<form action="Edit" method="post">
+
+<c:forEach var="row" items="${result.rows}">
+
+  <div style="font-size: 0.5 cm">
+ Account No:	<input type="text" name="Accountnum"  value="${row.AccountNum}" readonly="readonly">
+ 	<br>
+Name:	<input type="text" name="Name" value="${row.Name} ">
+	<br>
+Email:	<input type="text" name="Email" value="${row.Email}">
+	<br>
+Password:	<input name="Password" type="text" value="${row.Password }">
+	<br>	
+AadharNum:	<input name="Aadharnum" type="text" value="${row.AadharNum }">
+	<br>
+Acc Type:	<input  name="Type" tye="text" value="${row.Type }">
+	<br>
+	
+Balance:	<input type="text" name="Money" value="${row.Savings}" readonly="readonly">
+
+</div>
+</c:forEach>
+<button  type="submit" value="done">Done</button>
+ </form>
 </body>
 </html>

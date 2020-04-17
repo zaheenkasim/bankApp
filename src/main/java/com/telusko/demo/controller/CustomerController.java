@@ -2,10 +2,13 @@
 
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.telusko.demo.dao.CustomerRepo;
@@ -131,20 +134,33 @@ public ModelAndView sendMoney(Customer money) {
 		
 	
 }
+	/*
+	 * @GetMapping("/Edit") public ModelAndView editPage() { ModelAndView model= new
+	 * ModelAndView(); Iterable<Customer> customerList= customerService.findAll();
+	 * model.addObject("CustomerList", customerList); model.setViewName("Edit");
+	 * return model; }
+	 */
+
+
+
 @GetMapping("/Edit")
-public ModelAndView editPage()
+public ModelAndView editContact(HttpServletRequest request) {
+    String accountnum = request.getParameter("Accountnum");
+    Customer contact = CustomerRepo.get(accountnum);
+    ModelAndView model = new ModelAndView("Edit");
+    model.addObject("contact", contact);
+ 
+    return model;
+}
+
+@PostMapping("/Edit")
+public ModelAndView editPage(Customer customer)
 {
-	ModelAndView model= new ModelAndView();
-	Iterable<Customer> customerList= customerService.findAll();
-	model.addObject("CustomerList", customerList);
-	model.setViewName("Edit");
-	return model;
+	boolean c=this.customerService.edit(customer);
+	ModelAndView mv= new ModelAndView();
+	mv.setViewName("Edit");
+	return mv;
 	}
-
-
-
-
-
 
 }
 	 

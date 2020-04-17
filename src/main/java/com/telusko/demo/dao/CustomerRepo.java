@@ -19,4 +19,11 @@ public interface CustomerRepo
 	public Iterable<Customer> findAll();
 	
 	public boolean register(Customer customer);
+
+	public static  Customer get(String Accountnum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public boolean edit(Customer customer);
 }
