@@ -13,7 +13,7 @@
 			<div class="col-3"></div>
 			<div class="col-6">
 
-				<form method="post" action="register">
+				<form method="post" action="Register">
 				<%
                      Random random=new Random();
                     int num=random.nextInt();

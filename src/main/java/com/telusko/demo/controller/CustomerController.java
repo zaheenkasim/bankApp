@@ -40,18 +40,32 @@ public class CustomerController
 //	
     
     @RequestMapping("/")
-    public String Register()
+    public String Login()
 	{
 		return "Login";
     }
-    @RequestMapping("/register")
-	public String addCustomer(Customer customer)
-	{   
-		//repo.save(customer);
-		return "Login";
+   
+    @GetMapping("/Register")
+    public ModelAndView Register()
+    {
+    	ModelAndView model = new ModelAndView();
+    	Iterable<Customer> customerList = customerService.findAll();
+    	model.addObject("CustomerList", customerList);
+    	model.setViewName("Register");
+    	return model;
+    	
+    }
+    
+    
+    @PostMapping("/Register")
+	public ModelAndView vehicleRegister(Customer customer) 
+	{	
+		System.out.println();
+		this.customerService.register(customer);	
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Register");
+		return mv;
 	}
-    
-    
     
 	/*
 	 * @GetMapping("/Home") public ModelAndView signinPage1() { ModelAndView mv =

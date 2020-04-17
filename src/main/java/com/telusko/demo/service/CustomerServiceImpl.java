@@ -34,4 +34,10 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepo.debit(money);
 	}
 
+	@Override
+	public boolean register(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerRepo.register(customer);
+	}
+
 }

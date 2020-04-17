@@ -12,4 +12,6 @@ public interface CustomerService {
 	public boolean debit(Customer money);
 	
 	public Iterable<Customer> findAll();
+	
+	public boolean register(Customer customer);
 	}

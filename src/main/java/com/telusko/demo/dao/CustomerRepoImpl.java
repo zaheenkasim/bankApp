@@ -111,5 +111,26 @@ public  class CustomerRepoImpl implements CustomerRepo  {
 			
 		}
 }
+
+	@Override
+	public boolean register(Customer customer) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "insert into user(AccountNum, Name, Email, Password, AadharNum, Type) values(?,?,?,?,?,?);";
+			jdbcTemplate.update(sql, customer.getAccountnum(), customer.getName(), customer.getEmail(),customer.getPassword(),customer.getAadharnum(),customer.getType());
+			
+			return true;	
+			
+			}
+			catch(Exception e) {
+				
+				return false;
+				
+			}
+			
+		
 	}
+		
+	}
+	
      

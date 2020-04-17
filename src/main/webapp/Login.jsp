@@ -28,7 +28,7 @@
 					
 					
 					<button type="submit" class="btn btn-primary">Login</button>
-				</a>
+				  <a href="Register"><input type="button" value="Register" class="btn btn-primary btn-block btn-large"></a>
 				</form>
 			</div>
 		</div>

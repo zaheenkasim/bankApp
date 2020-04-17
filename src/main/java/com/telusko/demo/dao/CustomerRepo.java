@@ -18,4 +18,5 @@ public interface CustomerRepo
 	
 	public Iterable<Customer> findAll();
 	
+	public boolean register(Customer customer);
 }
